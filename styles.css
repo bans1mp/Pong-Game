@@ -75,12 +75,13 @@ body {
 
 .message {
     position: absolute;
-    font-weight: bold;
-    font-size: 4vh;
+    
+    font-size: 5vh;
     left: 50vw;
     top: 50vh;
     transform: translate(-50% , -50%);
     color: var(--foreground-color) ;
+    font-family: "Oswald" , sans-serif ;
 }
 
 .visibility {
