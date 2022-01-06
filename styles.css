@@ -9,6 +9,18 @@
     --background-color: hsl(var(--hue) , var(--saturation) , 20%) ;
 }
 
+.overlay {
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    opacity: 70%;
+    transition: all 2s;
+}
+
+.closed{
+    background-color: transparent;
+}
+
 body {
     margin: 0;
     background-color: var(--background-color) ;
@@ -17,7 +29,7 @@ body {
 
 .paddle{
     --position: 50;
-
+    
 
     position: absolute ;
     background-color: var(--foreground-color) ;
@@ -39,7 +51,7 @@ body {
 .ball {
     --x: 50;
     --y: 50;
-
+    
 
     position: absolute ;
     background-color: var(--foreground-color) ;
@@ -53,11 +65,27 @@ body {
 }
 
 .score {
+    
     display: flex;
     justify-content: center;
     font-weight: bold;
     font-size: 7vh;
     color: var(--foreground-color) ;
+}
+
+.message {
+    position: absolute;
+    font-weight: bold;
+    font-size: 4vh;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50% , -50%);
+    color: var(--foreground-color) ;
+}
+
+.visibility {
+    opacity: 0%;
+    
 }
 
 .score > *{

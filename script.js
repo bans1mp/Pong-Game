@@ -8,8 +8,11 @@ const playerScoreElem = document.getElementById("player-score")
 const computerScoreElem = document.getElementById("computer-score")
 
 let lastTime;
+let isStarted = false;
+let firstClick = true;
+
 function update(time) {
-    if (lastTime != null) {
+    if (lastTime != null && isStarted) {
         const delta = time - lastTime
         //Updating code
         ball.update(delta, [playerPaddle.rect(), computerPaddle.rect()])
@@ -21,6 +24,14 @@ function update(time) {
         if (isLose()) handleLose();
 
     }
+    addEventListener('keyup', () => {
+        isStarted = true;
+        if (firstClick) {
+            removeStartMessageAndShowGame();
+            firstClick = false;
+        }
+
+    })
     lastTime = time
     window.requestAnimationFrame(update)
 
@@ -45,7 +56,18 @@ function handleLose() {
 
 }
 
+function removeStartMessageAndShowGame() {
+    document.getElementById("message").innerHTML = ""
+    document.getElementById("overlay").classList.toggle('closed');
+    document.getElementById("ball").classList.toggle('visibility');
+    document.getElementById("player-paddle").classList.toggle('visibility');
+    document.getElementById("computer-paddle").classList.toggle('visibility');
+    document.getElementById("allScores").classList.toggle('visibility');
+
+}
+
 document.addEventListener("mousemove", e => {
     playerPaddle.position = (e.y / window.innerHeight) * 100
 })
+
 window.requestAnimationFrame(update)
